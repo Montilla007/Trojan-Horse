@@ -68,6 +68,7 @@ class TeachersController extends Controller
                 ], 200);
             }else{
                 return response()->json(    [
+                    'password' => $user->password,
                     'message' => 'Incorrect credentials'
                 ], 400);
                 
