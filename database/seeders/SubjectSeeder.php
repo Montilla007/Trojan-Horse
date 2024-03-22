@@ -13,7 +13,7 @@ class SubjectSeeder extends Seeder
      */
     public function run(): void
     {
-        DB::table('subject')->insert([
+        DB::table('subjects')->insert([
             [
                 'subject_code' => 'ITE 393',
                 'description' => 'Applications Development and Emerging Technologies (including Event-Driven Programming)',
