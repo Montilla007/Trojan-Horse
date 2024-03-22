@@ -31,7 +31,7 @@ public function index()
     public function create(Request $request, $id)
     {
         // Validate the request data
-        $validatedData = $request->validate([
+        $activity = $Activity::create([
             'description' => 'required|string',
             'start_time' => 'required|date_format:Y-m-d H:i:s',
             'end_time' => 'required|date_format:Y-m-d H:i:s',
@@ -41,9 +41,9 @@ public function index()
         ]);
 
         // Find the classroom by ID
-        $classroom = Classrooms::create($validatedData);
+        //$classroom = Classrooms::create($validatedData);
 
         // Return a success response
-        return response()->json(['message' => 'schedule created', 'data' => $classroom], 200);
+        return response()->json(['message' => 'schedule created', 'data' => $activity], 200);
     }
 }
