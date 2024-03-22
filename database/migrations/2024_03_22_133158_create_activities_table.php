@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('classroom_id')->nullable();
             $table->unsignedBigInteger('teacher_id')->nullable();
-            $table->unsignedBigInteger('subject_id')->nullable();
+            $table->string('subject')->nullable();
             $table->text('description')->nullable();
             $table->timestamp('start_time')->nullable();
             $table->timestamp('end_time')->nullable();
@@ -28,8 +28,7 @@ return new class extends Migration
 
             $table->foreign('classroom_id')->references('id')->on('classrooms')->onDelete('set null');
             $table->foreign('teacher_id')->references('id')->on('teachers')->onDelete('set null');
-            $table->foreign('subject_id')->references('id')->on('subjects')->onDelete('set null');
-            
+        
         });
     }
 

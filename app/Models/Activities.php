@@ -13,7 +13,7 @@ class Activities extends Model
         'classroom_id',
         'title',
         'teacher_id',
-        'subject_id',
+        'subject',
         'description',
         'start_time',
         'end_time',
@@ -32,9 +32,5 @@ class Activities extends Model
     public function teacher()
     {
         return $this->belongsTo(Teachers::class);
-    }
-    public function subject()
-    {
-        return $this->belongsTo(Subjects::class);
     }
 }

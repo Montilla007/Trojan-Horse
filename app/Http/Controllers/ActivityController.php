@@ -39,7 +39,7 @@ public function create(Request $request, int $classroom_id)
         'start_time' => 'required|date_format:Y-m-d H:i:s',
         'end_time' => 'required|date_format:Y-m-d H:i:s',
         'teacher_id' => 'required|exists:teachers,id',
-        'subject_id' => 'required|exists:subjects,id',
+        'subject' => 'required|string',
 
         'student_program' => 'required|string',
         'year_level' => 'required|integer', // Ensure year_level is an integer
