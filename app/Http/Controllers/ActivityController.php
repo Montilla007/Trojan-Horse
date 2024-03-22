@@ -40,6 +40,21 @@ public function index()
             'subject_id' => 'required|exists:subjects,id'            
         ]);
 
+        // Create a Carbon instance for start_time and end_time
+        $startTime = Carbon::parse($validatedData['start_time']);
+        $endTime = Carbon::parse($validatedData['end_time']);
+
+        // Check if end_time is lower than start_time
+        if ($endTime->lt($startTime)) {
+            return response()->json(['error' => 'End time must be after start time'], 422);
+        }
+        if ($startTime->diffInMinutes($endTime) < 30) {
+            return response()->json(['error' => 'The duration must be at least 30 minutes'], 422);
+        }
+        if ($startTime->diffInHours($endTime) > 5) {
+            return response()->json(['error' => 'The duration must not exceed 5 hours'], 422);
+        }
+
         // Create a new activity record
         $activity = Activities::create($validatedData);
 
