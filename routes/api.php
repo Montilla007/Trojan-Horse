@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Api\StudentsController;
 use App\Http\Controllers\Api\TeachersController;
+use App\Http\Controllers\ClassroomController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -27,3 +28,7 @@ Route::post('/auth/student/logout', [StudentsController::class, 'logout'])->midd
 Route::post('/auth/teacher/register', [TeachersController::class, 'register']);
 Route::post('/auth/teacher/login', [TeachersController::class, 'login']);
 Route::post('/auth/teacher/logout', [TeachersController::class, 'logout'])->middleware('auth:sanctum');
+
+
+Route::apiResource('/classrooms', ClassroomController::class);
+Route::put('/classrooms/{id}', [ClassroomController::class, 'update']);
