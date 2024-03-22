@@ -19,6 +19,10 @@ return new class extends Migration
             $table->text('description')->nullable();
             $table->timestamp('start_time')->nullable();
             $table->timestamp('end_time')->nullable();
+            $table->string('student_program')->nullable();
+            $table->unsignedInteger('year_level')->nullable();
+            $table->json('block_number')->nullable();
+            $table->json('section')->nullable();         
             $table->timestamps();
 
             $table->foreign('classroom_id')->references('id')->on('classrooms')->onDelete('set null');

@@ -15,7 +15,14 @@ class Activities extends Model
         'subject_id',
         'description',
         'start_time',
-        'end_time'
+        'end_time',
+        'student_program',
+        'year_level',
+        'block_number',
+        'section',
+    ];
+    protected $casts = [
+        'block_number' => 'array', // Cast block_numbers attribute to array
     ];
     public function classroom()
     {

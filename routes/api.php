@@ -35,4 +35,4 @@ Route::post('/auth/teacher/logout', [TeachersController::class, 'logout'])->midd
 // Route::put('/classrooms/{id}', [ClassroomController::class, 'update']);
 
 
-Route::post('/activity', [ActivityController::class, 'create']);
+Route::post('/activity/{classroom_id}', [ActivityController::class, 'create']);
