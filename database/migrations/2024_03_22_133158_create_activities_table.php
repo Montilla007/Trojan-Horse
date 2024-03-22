@@ -20,6 +20,7 @@ return new class extends Migration
             $table->timestamp('start_time')->nullable();
             $table->timestamp('end_time')->nullable();
             $table->string('student_program')->nullable();
+            $table->string('title')->nullable();
             $table->unsignedInteger('year_level')->nullable();
             $table->json('block_number')->nullable();
             $table->json('section')->nullable();         

@@ -11,6 +11,7 @@ class Activities extends Model
 
     protected $fillable = [
         'classroom_id',
+        'title',
         'teacher_id',
         'subject_id',
         'description',
