@@ -15,16 +15,44 @@ class ClassroomSeeder extends Seeder
         // Example data for classrooms
         $classrooms = [
             [
-                'room_number' => 'Room 1',
+                'room_number' => 'ITS 200',
                
             ],
             [
-                'room_number' => 'Room 2',
+                'room_number' => 'ITS 201',
 
             ],
             [
-                'room_number' => 'Room 2',
+                'room_number' => 'PTC 301',
             ],
+            [
+                'room_number' => 'PTC 302',
+            ],
+            [
+                'room_number' => 'PTC 303',
+            ],
+            [
+                'room_number' => 'PTC 304',
+            ],
+            [
+                'room_number' => 'PTC 305',
+            ],
+            [
+                'room_number' => 'PTC 306',
+            ],
+            [
+                'room_number' => 'PTC 403',
+            ],
+            [
+                'room_number' => 'PTC 404',
+            ],
+            [
+                'room_number' => 'PTC 405',
+            ],
+            [
+                'room_number' => 'PTC 406',
+            ],
+
             // Add more classrooms as needed
         ];
 
