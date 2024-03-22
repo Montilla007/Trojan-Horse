@@ -3,6 +3,7 @@
 use App\Http\Controllers\Api\StudentsController;
 use App\Http\Controllers\Api\TeachersController;
 use App\Http\Controllers\ClassroomController;
+use App\Http\Controllers\ActivityController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -32,3 +33,5 @@ Route::post('/auth/teacher/logout', [TeachersController::class, 'logout'])->midd
 
 Route::apiResource('/classrooms', ClassroomController::class);
 Route::put('/classrooms/{id}', [ClassroomController::class, 'update']);
+
+Route::put('/classrooms', [ActivityController::class, 'create']);
