@@ -66,6 +66,19 @@ public function create(Request $request, int $classroom_id)
     // Add the classroom_id to the validated data
     $validatedData['classroom_id'] = $classroom_id;
 
+    // Check for overlapping bookings
+    $overlap = Activities::where('classroom_id', $validatedData['classroom_id'])
+        ->where(function ($query) use ($validatedData) {
+            $query->whereBetween('start_time', [$validatedData['start_time'], $validatedData['end_time']])
+                  ->orWhereBetween('end_time', [$validatedData['start_time'], $validatedData['end_time']]);
+        })
+        ->exists();
+
+    // If there is an overlap, return an error response
+    if ($overlap) {
+        return response()->json(['error' => 'The selected time range overlaps with an existing booking'], 422);
+    }
+
     // Create a Carbon instance for start_time and end_time
     $startTime = Carbon::parse($validatedData['start_time']);
     $endTime = Carbon::parse($validatedData['end_time']);
