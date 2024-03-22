@@ -2,6 +2,7 @@
 
 namespace App\Console;
 
+use App\Models\Activities;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
@@ -10,11 +11,15 @@ class Kernel extends ConsoleKernel
     /**
      * Define the application's command schedule.
      */
-    protected function schedule(Schedule $schedule)
+    protected $commands = [
+        Commands\UpdateClassroomStatus::class,
+    ];
+    protected function schedule(Schedule $schedule): void
     {
-       $schedule->call(function () {
-        info('called every minute with schedule');
-        })->everyMinute();
+        $schedule->call(function () {
+            // Logic to check and update classroom statuses
+            Activities::where('end_time', '<=', now())->delete();
+        })->everyMinute(); // Run the task every minute
     }
 
     /**

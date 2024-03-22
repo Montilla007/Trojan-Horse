@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Classrooms;
+use App\Models\Activities;
 use Illuminate\Support\Carbon;
 
 class ActivityController extends Controller
@@ -28,20 +28,20 @@ public function index()
     return response()->json($responseData);
 }
 
-    public function create(Request $request, $id)
+    public function create(Request $request)
     {
         // Validate the request data
-        $activity = $Activity::create([
+        $validatedData = $request->validate([
             'description' => 'required|string',
             'start_time' => 'required|date_format:Y-m-d H:i:s',
             'end_time' => 'required|date_format:Y-m-d H:i:s',
             'teacher_id' => 'required|exists:teachers,id',
-            'classroom_id' => 'required|exists:classroom,id',
-            'subject_id' => 'required|exists:subject_id'            
+            'classroom_id' => 'required|exists:classrooms,id',
+            'subject_id' => 'required|exists:subjects,id'            
         ]);
 
-        // Find the classroom by ID
-        //$classroom = Classrooms::create($validatedData);
+        // Create a new activity record
+        $activity = Activities::create($validatedData);
 
         // Return a success response
         return response()->json(['message' => 'schedule created', 'data' => $activity], 200);

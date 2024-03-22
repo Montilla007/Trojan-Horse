@@ -31,7 +31,8 @@ Route::post('/auth/teacher/login', [TeachersController::class, 'login']);
 Route::post('/auth/teacher/logout', [TeachersController::class, 'logout'])->middleware('auth:sanctum');
 
 
-Route::apiResource('/classrooms', ClassroomController::class);
-Route::put('/classrooms/{id}', [ClassroomController::class, 'update']);
+// Route::apiResource('/classrooms', ClassroomController::class);
+// Route::put('/classrooms/{id}', [ClassroomController::class, 'update']);
 
-Route::put('/classrooms', [ActivityController::class, 'create']);
+
+Route::post('/activity', [ActivityController::class, 'create']);
