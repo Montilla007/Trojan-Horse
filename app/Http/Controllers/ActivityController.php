@@ -43,6 +43,19 @@ public function room(int $classroom_id) {
     return response()->json(['activities' => $activities], 200);
 }
 
+public function teacher(int $classroom_id) {
+    // Retrieve activities for the specified classroom_id
+    $activities = Activities::where('teacher_id', $classroom_id)->get();
+
+    // Check if any activities are found
+    if ($activities->isEmpty()) {
+        return response()->json(['message' => 'No activities found for the specified classroom'], 404);
+    }
+
+    // Return the activities as a JSON response
+    return response()->json(['activities' => $activities], 200);
+}
+
 public function create(Request $request, int $classroom_id)
 {
     // Validate the request data
