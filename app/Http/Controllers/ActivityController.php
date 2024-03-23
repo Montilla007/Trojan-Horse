@@ -78,8 +78,8 @@ public function create(Request $request, int $classroom_id)
 {
     // Validate the request data
     $validatedData = $request->validate([
-        'title' => 'required|string',
-        'description' => 'required|string',
+        'title' => 'nullable|string',
+        'description' => 'nullable|string',
         'start_time' => 'required|date_format:Y-m-d H:i:s',
         'end_time' => 'required|date_format:Y-m-d H:i:s',
         'teacher_id' => 'required|exists:teachers,id',
