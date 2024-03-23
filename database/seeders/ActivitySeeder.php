@@ -25,7 +25,7 @@ class ActivitySeeder extends Seeder
                 'teacher_id' => 1,
                 'subject' => 'Sample Subject 1',
                 'student_program' => 'BSIT',
-                'year_level' => 1,
+                'year_level' => 2,
                 'block_number' => ['1', '2'],
                 'classroom_id' => 1,
             ],

@@ -55,10 +55,10 @@ public function teacher(int $classroom_id) {
     // Return the activities as a JSON response
     return response()->json(['activities' => $activities], 200);
 }
-public function section(string $student_program, int $year_level)
+public function section(string $section, int $year_level)
 {
-    // Retrieve activities for the specified student_program and year_level
-    $activities = Activities::where('student_program', $student_program)
+    // Retrieve activities for the specified section and year_level
+    $activities = Activities::whereJsonContains('section', $section)
         ->where('year_level', $year_level)
         ->get();
 
@@ -70,6 +70,8 @@ public function section(string $student_program, int $year_level)
     // Return the activities as a JSON response
     return response()->json(['activities' => $activities], 200);
 }
+
+
 
 
 

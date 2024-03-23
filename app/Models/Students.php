@@ -20,6 +20,7 @@ class Students extends Authenticatable
         'email',
         'studentnum',
         'section',
+        'year_level',
         'password',
     ];
     /**

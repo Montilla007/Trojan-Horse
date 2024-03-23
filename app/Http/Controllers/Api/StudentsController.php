@@ -17,6 +17,7 @@ class StudentsController extends Controller
             'email' => 'required|email|max:30|unique:users',
             'studentnum' => 'required|max:20',
             'section' => 'required|max:20',
+            'year_level' => 'required|Integer',
             'password' => 'required|min:5|max:16',
             'confirm_password' => 'required|min:5|max:16|same:password'
         ]);
@@ -33,6 +34,7 @@ class StudentsController extends Controller
             'studentnum' => $request->studentnum,
             'email'=>$request->email,
             'section'=>$request->section,
+            'year_level'=>$request->year_level,
             'password'=>Hash::make($request->password)
         ]);
 

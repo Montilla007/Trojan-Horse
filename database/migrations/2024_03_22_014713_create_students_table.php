@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->string('studentnum')->unique();
             $table->string('section');
+            $table->string('year_level');
             $table->string('password');
             $table->timestamps();
         });
