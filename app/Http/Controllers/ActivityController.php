@@ -14,20 +14,33 @@ class ActivityController extends Controller
 
 public function index()
 {
-    // Retrieve all classrooms
-    $classrooms = Classrooms::all();
+    // Retrieve all activities
+    $activities = Activities::all();
 
     // Current time
     $currentTime = Carbon::now()->toDateTimeString();
 
-    // Merge the current time with the classrooms data
+    // Merge the current time with the activities data
     $responseData = [
         'current_time' => $currentTime,
-        'classrooms' => $classrooms,
+        'classrooms' => $activities,
     ];
 
     // Return the data as a JSON response
     return response()->json($responseData);
+}
+
+public function room(int $classroom_id) {
+    // Retrieve activities for the specified classroom_id
+    $activities = Activities::where('classroom_id', $classroom_id)->get();
+
+    // Check if any activities are found
+    if ($activities->isEmpty()) {
+        return response()->json(['message' => 'No activities found for the specified classroom'], 404);
+    }
+
+    // Return the activities as a JSON response
+    return response()->json(['activities' => $activities], 200);
 }
 
 public function create(Request $request, int $classroom_id)
