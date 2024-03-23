@@ -55,6 +55,24 @@ public function teacher(int $classroom_id) {
     // Return the activities as a JSON response
     return response()->json(['activities' => $activities], 200);
 }
+public function section(string $student_program, int $year_level)
+{
+    // Retrieve activities for the specified student_program and year_level
+    $activities = Activities::where('student_program', $student_program)
+        ->where('year_level', $year_level)
+        ->get();
+
+    // Check if any activities are found
+    if ($activities->isEmpty()) {
+        return response()->json(['message' => 'No activities found for the specified criteria'], 404);
+    }
+
+    // Return the activities as a JSON response
+    return response()->json(['activities' => $activities], 200);
+}
+
+
+
 
 public function create(Request $request, int $classroom_id)
 {

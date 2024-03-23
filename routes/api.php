@@ -37,4 +37,5 @@ Route::post('/auth/teacher/logout', [TeachersController::class, 'logout'])->midd
 Route::get('/activity', [ActivityController::class, 'index']);
 Route::get('/classroom/{id}', [ActivityController::class, 'room']); 
 Route::get('/teacher/{id}', [ActivityController::class, 'teacher']); 
+Route::get('/section/{student_program}/{year_level}', [ActivityController::class, 'section']); 
 Route::post('/activity/{classroom_id}', [ActivityController::class, 'create']);
